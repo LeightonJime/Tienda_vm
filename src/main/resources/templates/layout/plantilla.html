@@ -34,18 +34,49 @@
                                 aria-expanded="false">[[#{plantilla.extras}]]</li>
                             <ul class="dropdown-menu dropdown-dark">
                                 <li><a class="dropdown-item" th:href="@{/pruebas/listado}">[[#{plantilla.asociaciones}]]</a></li>
-                                
+
+                            </ul>
+                            <li class="nav-link-dropdown" 
+                                data-bs-toggle="dropdown" 
+                                herf="#" 
+                                role="button"
+                                aria-expanded="false">[[#{plantilla.admin}]]</li>
+                            <ul class="dropdown-menu dropdown-dark">
+                                <li><a class="dropdown-item" th:href="@{/usuario/listado}">[[#{plantilla.usuarios}]]</a></li>
+                                <li><a class="dropdown-item" th:href="@{/constante/listado}">[[#{plantilla.constantes}]]</a></li>
+                                <li class="dropdown-item dropdown-toggle" 
+                                data-bs-toggle="dropdown" 
+                                herf="#" 
+                                role="button"
+                                onclick="event.stopPropagation();"
+                                aria-expanded="false">[[#{plantilla.seguridad}]]</li>
+                            <ul class="dropdown-menu dropdown-dark">
+                                <li><a class="dropdown-item" th:href="@{/role/listado}">[[#{plantilla.troles}]]</a></li>
+                                <li><a class="dropdown-item" th:href="@{/usuario_role/asignar}">[[#{plantilla.permisos}]]</a></li>
+                                <li><a class="dropdown-item" th:href="@{/ruta/listado}">[[#{plantilla.rutas}]]</a></li>
+
+                            </ul>
+                        </ul>
+                        
+                            <li class="nav-link-dropdown" 
+                                data-bs-toggle="dropdown" 
+                                herf="#" 
+                                role="button"
+                                aria-expanded="false">[[#{plantilla.idioma}]]</li>
+                            <ul class="dropdown-menu dropdown-dark">
+                                <li><a class="dropdown-item" th:href="@{/(lang=es)}">Español</a></li>
+                                <li><a class="dropdown-item" th:href="@{/(lang=en)}">English</a></li>
+                                <li><a class="dropdown-item" th:href="@{/(lang=fr)}">Francais</a></li>
+                                <li><a class="dropdown-item" th:href="@{/(lang=pt)}">Portugaise</a></li>
                             </ul>
 
-                        </ul>
-                         
                     </div>
                 </div>
             </nav>
         </header>
 
-       
-        
+
+
         <footer th:fragment="footer" class="p-2 mt-5 bg-info text-white">
             <p class="text-center lead">&COPY; [[#{plantilla.derechos}]]</p>
         </footer>
