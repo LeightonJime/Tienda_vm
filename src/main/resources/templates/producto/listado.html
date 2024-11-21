@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<!-- Mi primera página HTML dinámica -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>TechShop</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+
+        <header th:replace="~{layout/plantilla :: header}"></header>
+
+        <!-- Including fragments from producto/fragmentos.html -->
+        <section th:replace="~{producto/fragmentos :: botonesAgregar}">title</section>
+        <section th:replace="~{producto/fragmentos :: agregarProductos}">title</section>
+        <section th:replace="~{producto/fragmentos :: listadoProductos}">title</section>
+
+        <footer th:replace="~{layout/plantilla :: footer}"></footer>
+    </body>
+</html>
