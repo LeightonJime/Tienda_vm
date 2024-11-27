@@ -1,4 +1,3 @@
-
 package com.tienda.controller;
 
 import com.tienda.domain.Categoria;
@@ -18,34 +17,74 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 @RequestMapping("/pruebas")
 public class PruebasController {
-   
+
     @Autowired
     private ProductoService productoService;
-    
+
     @Autowired
     private CategoriaService categoriaService;
-    
+
     @GetMapping("/listado")
-    public String listado(Model model){
-        var lista=productoService.getProductos(false);                
+    public String listado(Model model) {
+        var lista = productoService.getProductos(false);
         model.addAttribute("productos", lista);
         model.addAttribute("totalProductos", lista.size());
-        
-        var categorias=categoriaService.getCategorias(true);                
+
+        var categorias = categoriaService.getCategorias(true);
         model.addAttribute("categorias", categorias);
-        
-        return"/pruebas/listado";
-        
-        
+
+        return "/pruebas/listado";
     }
 
-    @GetMapping("/listado/{idProducto}")
+    @GetMapping("/listado/{idCategoria}")
     public String listado(Categoria categoria, Model model) {
         categoria = categoriaService.getCategoria(categoria);
         model.addAttribute("productos", categoria.getProductos());
-        var categorias=categoriaService.getCategorias(true);                
+        var categorias = categoriaService.getCategorias(true);
         model.addAttribute("categorias", categorias);
         return "/pruebas/listado";
     }
-}
 
+    @GetMapping("/listado2")
+    public String listado2(Model model) {
+        var lista = productoService.getProductos(false);
+        model.addAttribute("productos", lista);
+        return "/pruebas/listado2";
+    }
+
+    @PostMapping("/consultaAmpliada")
+    public String consultaAmpliada(
+            @RequestParam(value = "precioInf") double precioInf,
+            @RequestParam(value = "precioSup") double precioSup,
+            Model model) {
+        var lista = productoService.consultaAmpliada(precioInf, precioSup);
+        model.addAttribute("productos", lista);
+        model.addAttribute("precioInf", precioInf);
+        model.addAttribute("precioSup", precioSup);
+        return "/pruebas/listado2";
+    }
+    
+    @PostMapping("/consultaJPQL")
+    public String consultaJPQL(
+            @RequestParam(value = "precioInf") double precioInf,
+            @RequestParam(value = "precioSup") double precioSup,
+            Model model) {
+        var lista = productoService.consultaJPQL(precioInf, precioSup);
+        model.addAttribute("productos", lista);
+        model.addAttribute("precioInf", precioInf);
+        model.addAttribute("precioSup", precioSup);
+        return "/pruebas/listado2";
+    }
+    
+    @PostMapping("/consultSQL")
+    public String consultaSQL(
+            @RequestParam(value = "precioInf") double precioInf,
+            @RequestParam(value = "precioSup") double precioSup,
+            Model model) {
+        var lista = productoService.consultaSQL(precioInf, precioSup);
+        model.addAttribute("productos", lista);
+        model.addAttribute("precioInf", precioInf);
+        model.addAttribute("precioSup", precioSup);
+        return "/pruebas/listado2";
+    }
+}
