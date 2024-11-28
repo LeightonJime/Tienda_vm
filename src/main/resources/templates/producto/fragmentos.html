@@ -227,7 +227,7 @@
                                                 <th>[[#{producto.categoria}]]</th>
                                                 <th>[[#{producto.activo}]]</th>
                                                 <th>[[#{producto.rutaImagen}]]</th>
-                                                <th>Imagen</th>
+                                                <th sec:authorize="hasRole('ROLE_ADMIN')"></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -241,7 +241,7 @@
 
                                                 <td th:text="${p.activo} ? 'Activa' : 'Inactiva'"></td>
                                                 <td><img th:src="@{${p.rutaImagen}}" height="75" alt="Imagen del producto"/></td>
-                                                <td>
+                                                <td sec:authorize="hasRole('ROLE_ADMIN')">
                                                     <a class="btn btn-danger"
                                                        th:href="@{/producto/eliminar/}+${p.idProducto}">
                                                         <i class="fas fa-trash"></i> [[#{accion.eliminar}]]

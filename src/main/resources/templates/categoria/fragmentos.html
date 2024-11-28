@@ -13,7 +13,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-3">   
-                        <button type="button" 
+                        <button sec:authorize="hasRole('ROLE_ADMIN')" 
+                                type="button" 
                                 class="btn btn-primary btn-block" 
                                 data-bs-toggle="modal" 
                                 data-bs-target="#agregarCategoria">
@@ -72,7 +73,7 @@
         </section>
 
 
-                <!-- 5 Fragmento que se utiliza en el fragmento anterior -->
+        <!-- 5 Fragmento que se utiliza en el fragmento anterior -->
         <section th:fragment="botonesEditar">
             <div class="container py-4 mb-4 bg-light">
                 <div class="row">
@@ -95,7 +96,7 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- 4 Fragmento que se utiliza en la página modifca.html -->
         <section th:fragment="editarCategoria">
             <div class="row">
@@ -167,7 +168,7 @@
                                                 <th>[[#{categoria.descripcion}]]</th>
                                                 <th>[[#{categoria.activo}]]</th>
                                                 <th>[[#{categoria.rutaImagen}]]</th>
-                                                <th>Imagen</th>
+                                                <th sec:authorize="hasRole('ROLE_ADMIN')"></th>
                                             </tr>
                                         </thead>
                                         <tbody>
