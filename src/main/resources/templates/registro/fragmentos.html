@@ -13,7 +13,7 @@
         <!-- 4 Fragmento que se utiliza en la página modifca.html -->
         <section th:fragment="nuevo">
             <div class="row p-2 justify-content-center">
-                <div>
+                <div class="col-md-3">
                     <a class='btn btn-primary'
                        href='/login'>
                         <i class='fas fa-arrow-left'></i>[[#{accion.regresar}]]
@@ -22,7 +22,7 @@
             </div> 
             <div class="row p-2 justify-content-center">
                 <div class="col-md-3">  
-                    <form method="POST"
+                    <form method="GET"
                           th:action="@{/registro/crear}" 
                           th:object="${usuario}"
                           class="was-validated"                          
@@ -55,22 +55,22 @@
                                            th:field="*{apellidos}"
                                            maxlenght="20"
                                            required="true"/>
-                                        <div class="form-group mb-3">
-                                    <label>[[#{usuario.correo}]]</label>
-                                    <input type="email" class="form-control" 
-                                           name="correo"
-                                           th:field="*{correo}"
-                                           maxlenght="40"
-                                           required="true"/>
-                                </div>
+                                    <div class="form-group mb-3">
+                                        <label>[[#{usuario.correo}]]</label>
+                                        <input type="email" class="form-control" 
+                                               name="correo"
+                                               th:field="*{correo}"
+                                               maxlenght="40"
+                                               required="true"/>
+                                    </div>
                                 </div>
                             </div>
-                            
+
                             <div class="card-footer text-white text-center">
                                 <button type="submit" class="btn btn-success">
                                     <i class="fas fa-envelope"></i> [[#{usuario.activacion}]]
                                 </button>
-                                
+
                             </div>
                         </div>
 
@@ -79,8 +79,21 @@
                 </div>
             </div>
         </section>
+        <section th:fragment="salida">
+            <div class="row p-2 justify-content-center">
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white text-center">
+                            <h4>[[${titulo}]]</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>[[${mensaje}]]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-
+        </section>
 
     </body>
 </html>
